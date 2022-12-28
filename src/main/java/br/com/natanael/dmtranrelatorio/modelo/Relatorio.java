@@ -11,7 +11,6 @@ public class Relatorio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nomeMotorista;
     private String matriculaMotorista;
     private String placaVeiculo;
     private Long kmRodadoNoServico;
@@ -21,9 +20,8 @@ public class Relatorio {
     public Relatorio() {
     }
 
-    public Relatorio(Integer id, String nomeMotorista, String matriculaMotorista, String placaVeiculo, Long kmRodadoNoServico, boolean avariadoNoServico, String detalheDaAvariaNoServico) {
+    public Relatorio(Integer id, String matriculaMotorista, String placaVeiculo, Long kmRodadoNoServico, boolean avariadoNoServico, String detalheDaAvariaNoServico) {
         this.id = id;
-        this.nomeMotorista = nomeMotorista;
         this.matriculaMotorista = matriculaMotorista;
         this.placaVeiculo = placaVeiculo;
         this.kmRodadoNoServico = kmRodadoNoServico;
@@ -37,14 +35,6 @@ public class Relatorio {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNomeMotorista() {
-        return nomeMotorista;
-    }
-
-    public void setNomeMotorista(String nomeMotorista) {
-        this.nomeMotorista = nomeMotorista;
     }
 
     public String getMatriculaMotorista() {

@@ -18,8 +18,13 @@ public class VeiculoController {
         return veiculoRepository.save(veiculo);
     }
 
-    @GetMapping("/{idVeiculo}")
+    @GetMapping("/id/{idVeiculo}")
     public Optional<Veiculo> pegarVeiculoPorId(@PathVariable Integer idVeiculo) {
         return veiculoRepository.findById(idVeiculo);
+    }
+
+    @GetMapping("/placa/{placaVeiculo}")
+    public Veiculo pegarVeiculoPorPLaca(@PathVariable String placaVeiculo){
+        return veiculoRepository.findByPlacaVeiculoIsContaining(placaVeiculo);
     }
 }

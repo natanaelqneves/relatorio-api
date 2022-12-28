@@ -21,6 +21,11 @@ public class RelatorioController {
 
     @PostMapping
     public Relatorio novoRelatorio(Relatorio relatorio) {
+        Veiculo veic = veiculoRepository.findByPlacaVeiculoIsContaining(relatorio.getPlacaVeiculo());
+        veic.setKmRodado(veic.getKmRodado() + relatorio.getKmRodadoNoServico());
+        veic.setAvariado(relatorio.isAvariadoNoServico());
+        veic.setDetalheDaAvaria(relatorio.getDetalheDaAvariaNoServico());
+        veiculoRepository.save(veic);
         return relatorioRepository.save(relatorio);
     }
 
@@ -29,7 +34,4 @@ public class RelatorioController {
         return relatorioRepository.findById(idRelatorio);
     }
 
-    public Optional<Veiculo> pegarVeiculoPorId(@PathVariable Integer idVeiculo) {
-        return veiculoRepository.findById(idVeiculo);
-    }
 }
