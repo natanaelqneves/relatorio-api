@@ -10,7 +10,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/pessoa")
 public class PessoaController {
-
     @Autowired
     private PessoaRepository pessoaRepository;
 
