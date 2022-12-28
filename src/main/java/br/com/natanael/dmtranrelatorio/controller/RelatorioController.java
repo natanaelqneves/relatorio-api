@@ -1,7 +1,9 @@
 package br.com.natanael.dmtranrelatorio.controller;
 
 import br.com.natanael.dmtranrelatorio.modelo.Relatorio;
+import br.com.natanael.dmtranrelatorio.modelo.Veiculo;
 import br.com.natanael.dmtranrelatorio.repository.RelatorioRepository;
+import br.com.natanael.dmtranrelatorio.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,9 @@ public class RelatorioController {
     @Autowired
     private RelatorioRepository relatorioRepository;
 
+    @Autowired
+    private VeiculoRepository veiculoRepository;
+
     @PostMapping
     public Relatorio novoRelatorio(Relatorio relatorio) {
         return relatorioRepository.save(relatorio);
@@ -22,5 +27,9 @@ public class RelatorioController {
     @GetMapping("/{idRelatorio}")
     public Optional<Relatorio> pegarRelatorioPorId(@PathVariable Integer idRelatorio) {
         return relatorioRepository.findById(idRelatorio);
+    }
+
+    public Optional<Veiculo> pegarVeiculoPorId(@PathVariable Integer idVeiculo) {
+        return veiculoRepository.findById(idVeiculo);
     }
 }
