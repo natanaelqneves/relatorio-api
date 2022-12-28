@@ -28,4 +28,15 @@ public class PessoaController {
     public Pessoa pegarPessoaPorNome(@PathVariable String nome) {
         return pessoaRepository.findByNomeIsContaining(nome);
     }
+
+    @PostMapping("/login")
+    public String loginPessoa(String matricula, String senhaDeUsuario) {
+        Pessoa pesso = pessoaRepository.findByMatriculaIsContaining(matricula);
+        boolean loginEfetuado = pesso.getSenhaDeUsuario().equals(senhaDeUsuario);
+        if(loginEfetuado){
+            return String.format("Login efetuado com sucesso, %s", pesso.getNome());
+        } else {
+            return "Login ou senha incorreto(s)";
+        }
+    }
 }

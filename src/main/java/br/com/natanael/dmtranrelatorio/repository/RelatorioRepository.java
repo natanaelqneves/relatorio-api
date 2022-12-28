@@ -8,6 +8,4 @@ import org.springframework.data.repository.query.Param;
 
 public interface RelatorioRepository extends CrudRepository<Relatorio, Integer>, PagingAndSortingRepository<Relatorio, Integer> {
 
-    public Veiculo findAllByNomeMotoristaIsContaining(@Param("nomeMotorista") String nomeMotorista);
-
 }
