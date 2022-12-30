@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.time.LocalDate;
+
 @Entity
 public class Relatorio {
 
@@ -12,6 +14,7 @@ public class Relatorio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String matriculaMotorista;
+    private LocalDate data;
     private String placaVeiculo;
     private Long kmRodadoNoServico;
     private boolean avariadoNoServico;
@@ -20,9 +23,10 @@ public class Relatorio {
     public Relatorio() {
     }
 
-    public Relatorio(Integer id, String matriculaMotorista, String placaVeiculo, Long kmRodadoNoServico, boolean avariadoNoServico, String detalheDaAvariaNoServico) {
+    public Relatorio(Integer id, String matriculaMotorista, LocalDate data, String placaVeiculo, Long kmRodadoNoServico, boolean avariadoNoServico, String detalheDaAvariaNoServico) {
         this.id = id;
         this.matriculaMotorista = matriculaMotorista;
+        this.data = data;
         this.placaVeiculo = placaVeiculo;
         this.kmRodadoNoServico = kmRodadoNoServico;
         this.avariadoNoServico = avariadoNoServico;
@@ -43,6 +47,14 @@ public class Relatorio {
 
     public void setMatriculaMotorista(String matriculaMotorista) {
         this.matriculaMotorista = matriculaMotorista;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     public String getPlacaVeiculo() {
